@@ -11,21 +11,28 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./assets:/assets
     restart: always
 
   backend:
     build:
       context: .
-      dockerfile: backend/dockerfile
+      dockerfile: ./backend/app/Dockerfile
     container_name: backend_app
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: postgresql://postgres:intuitivecare@db:5432/agencias
-    volumes:
-      - ./backend:/app
     ports:
       - "8000:8000"
+    volumes:
+      - ./backend/app:/app
+      - ./assets:/assets
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_app
+    ports:
+      - "8080:80"
     restart: always
 
 volumes:
