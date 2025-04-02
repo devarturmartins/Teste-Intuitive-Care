@@ -1,10 +1,11 @@
 from sqlalchemy import Column, String, Date
+from sqlalchemy.orm import relationship
 from app.database import Base
 
 class Agencia(Base):
     __tablename__ = "agencias"
 
-    registro_ans = Column(String(10), primary_key=True)
+    registro_ans = Column(String(10))
     cnpj = Column(String(14), nullable=False)
     razao_social = Column(String(255), nullable=False)
     nome_fantasia = Column(String(255))

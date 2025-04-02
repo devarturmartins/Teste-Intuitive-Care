@@ -1,0 +1,118 @@
+# **Teste Intuitive Care**
+
+Este projeto é um teste seletivo que envolve **Web Scraping**, **Transformação de Dados** e a criação de uma aplicação **Full Stack** com **FastAPI** no backend e **Vue.js** no frontend. O banco de dados utilizado é o **PostgreSQL**, e o ambiente é gerenciado com **Docker**.
+
+---
+
+## **Pré-requisitos**
+
+Antes de começar, certifique-se de que você tem os seguintes itens instalados na sua máquina:
+
+- **Python 3.10+**
+- **Docker** e **Docker Compose**
+- **Git**
+
+---
+
+## **Como Clonar o Projeto**
+
+1. Abra o terminal e navegue até o diretório onde deseja clonar o projeto.
+2. Execute o comando abaixo para clonar o repositório:
+
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+3. Navegue até o diretório do projeto:
+    ```bash
+    cd Teste-Intuitive-Care
+
+## **Passo a Passo**
+
+### **1. Web Scraping**
+
+O script de Web Scraping coleta dados de uma fonte específica e salva os resultados em arquivos locais.
+
+#### **Como Executar**
+1. Abra o terminal na raiz do projeto.
+2. Execute o comando:
+
+   ```bash
+   python ./backend/app/services/webscraping.py
+
+
+### **2. Transformação de Dados**
+
+O script de transformação de dados processa os dados coletados, realiza limpeza, ajustes e salva os resultados em formatos `.csv` e `.xlsx`. Além disso, compacta os arquivos em um `.zip`.
+
+#### **Como Executar**
+1. Abra o terminal na raiz do projeto.
+2. Execute o comando:
+
+   ```bash
+   python ./backend/app/services/transformacao_dados.py
+
+
+### **3. Banco de Dados**
+
+O banco de dados utilizado é o **PostgreSQL**, e os dados processados são transferidos para ele.
+
+#### **Como Configurar**
+1. Certifique-se de que o **Docker** está instalado na sua máquina.
+2. Suba o container do banco de dados com o comando:
+
+   ```bash
+   docker-compose up -d db
+
+3. Execute o script para criar as tabelas e transferir os dados para o banco:
+
+   ```bash
+   python ./backend/app/services/executa_sql.py
+
+4. As queries de filtros estão localizadas no diretório:
+   ```bash
+   ./backend/app/sql/queries
+
+### **4. Subir Ambiente Completo**
+
+Para rodar o backend, frontend e banco de dados juntos, siga os passos abaixo:
+
+1. Certifique-se de que o Docker está instalado.
+2. Execute: 
+    ```bash
+    docker-compose up --build
+3. O Docker irá instalar automaticamente as dependências do backend e do frontend.
+
+## **Comandos Úteis**
+
+### **1. Subir apenas o banco de dados**
+Para subir apenas o container do banco de dados PostgreSQL:
+
+    ```bash
+    docker-compose up -d db
+
+### **2. Subir todo o ambiente (backend, frontend e banco de dados)**
+Para subir o backend, frontend e banco de dados juntos, com as dependências sendo instaladas automaticamente:
+
+    ```bash
+    docker-compose up --build
+
+### **3. Parar os containers**
+
+    ```bash
+    docker-compose down
+
+### **Acessar o terminal do container**
+    1. Backend
+        ```bash
+        docker exec -it backend_app sh
+
+    2. Banco
+        ```bash
+        docker exec -it postgres_db psql -U postgres
+
+### **Observações:**
+Certifique-se de que os arquivos necessários (como PDFs ou CSVs) estão no diretório correto antes de executar os scripts.
+
+O Docker instala automaticamente as dependências do backend e do frontend ao rodar o comando docker-compose up --build
+
+
+Se precisar de mais informações, entre em contato! 🚀

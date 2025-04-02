@@ -6,8 +6,11 @@ openpyxl
 PyPDF2
 pdfminer.six
 sqlalchemy
-psycopg2
+# psycopg2
 fastapi
 uvicorn
 sqlalchemy
 psycopg2-binary
+fastapi
+uvicorn
+python-multipart

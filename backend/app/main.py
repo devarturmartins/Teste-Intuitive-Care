@@ -1,10 +1,17 @@
 from fastapi import FastAPI
-from app.routes import agencias
+from routes import agencias
+from fastapi.middleware.cors import CORSMiddleware
 
-# Inicializa o FastAPI
 app = FastAPI()
 
-# Inclui as rotas
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],  
+)
+
 app.include_router(agencias.router, prefix="/api/agencias", tags=["Agencias"])
 
 @app.get("/")
