@@ -1,0 +1,13 @@
+requests
+beautifulsoup4
+pdfplumber
+pandas
+openpyxl
+PyPDF2
+pdfminer.six
+sqlalchemy
+psycopg2
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
